@@ -19,12 +19,9 @@ projectFilesBackup/
 metastore_db/
 *.log
 *.class
-*.log
 *.zip
 *.gz
-*.jpeg
-*.jpg
-*.png
+
 *~
 .settings/
 .cache/
@@ -40,3 +37,5 @@ project/plugins/project/
 .classpath
 .cache
 
+.idea/
+t-backend/target
