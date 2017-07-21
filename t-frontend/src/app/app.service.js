@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var app_service_1 = require("./app.service");
+var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 require("rxjs/add/operator/debounceTime");
@@ -17,27 +17,19 @@ require("rxjs/add/operator/distinctUntilChanged");
 require("rxjs/add/operator/switchMap");
 require("rxjs/add/operator/toPromise");
 require("rxjs/Observable");
-var AppComponent = (function () {
-    function AppComponent(todoService) {
-        this.todoService = todoService;
-        this.name = 'Todo';
-        this.todoList = [];
+var TodoService = (function () {
+    function TodoService(http) {
+        this.http = http;
+        this.todoListApi = 'https://api.github.com/gists/public';
     }
-    AppComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        return this.todoService.getTodoList().subscribe(function (data) {
-            _this.todoList = data;
-            console.log(_this.todoList);
-        }, function (error) { return alert("Unable to fetch the list " + error); });
+    TodoService.prototype.getTodoList = function () {
+        return this.http.get(this.todoListApi).map(function (data) { return data.json(); });
     };
-    return AppComponent;
+    return TodoService;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        templateUrl: './app.component.html',
-    }),
-    __metadata("design:paramtypes", [app_service_1.TodoService])
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+TodoService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], TodoService);
+exports.TodoService = TodoService;
+//# sourceMappingURL=app.service.js.map

@@ -12,6 +12,6 @@ lazy val root = Project("Todo", file("."))
 
 lazy val tBackend = Project("t-backend", file("t-backend"))
   .settings(basicSettings: _*)
-  .settings(libraryDependencies ++= compile(akkaHttp, circeCore, circeParser, circeGeneric, hikariCP, slick, scalaGuice))
+  .settings(libraryDependencies ++= compile(akkaHttp, circeCore, circeParser, circeGeneric, hikariCP, slick, postgresql, scalaGuice))
 
 lazy val tFrontend = Project("t-frontend", file("t-frontend"))
