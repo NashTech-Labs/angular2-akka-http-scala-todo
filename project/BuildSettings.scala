@@ -1,7 +1,6 @@
 import sbt._
 import Keys._
 
-
 object BuildSettings {
   val VERSION = "SNAPSHOT"
 
